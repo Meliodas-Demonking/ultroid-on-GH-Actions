@@ -25,11 +25,11 @@ jobs:
            git config --global user.name ${{ secrets.GH_NAME }}
            git config --global user.email ${{ secrets.GH_MAIL }}
            git config --global credential.helper store
-           echo "https://${{ secrets.GH_NAME }}:${{ secrets.GITHUB_TOKEN }}@github.com" > ~/.git-credentials
+           echo "https://${{ secrets.GH_NAME }}:${{ secrets.GH_TOKEN }}@github.com" > ~/.git-credentials
        - name: Cloning Private repo
          continue-on-error: true
          run: |
-           git clone https://amirulandalib:${{ secrets.GITHUB_TOKEN }}@github.com/amirulandalib/ultroid_personal ultroid
+           git clone https://amirulandalib:${{ secrets.GH_TOKEN }}@github.com/amirulandalib/ultroid_personal ultroid
 
        - name: Running bomt
          timeout-minutes: 350
@@ -44,4 +44,4 @@ jobs:
               echo $(TZ='${{ secrets.TZ }}' date) >> loop.txt
               git add loop.txt
               git commit -m "Workflow : Loop $(TZ='${{ secrets.TZ }}' date)"
-              git push -q https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ secrets.GH_NAME }}/ultroid-on-GH-Actions HEAD:main
+              git push -q https://${{ secrets.GH_TOKEN }}@github.com/${{ secrets.GH_NAME }}/ultroid-on-GH-Actions HEAD:main
