@@ -6,7 +6,7 @@ on:
     
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     container: theteamultroid/ultroid:main
 
     steps:
@@ -25,11 +25,11 @@ jobs:
            git config --global user.name ${{ secrets.GH_NAME }}
            git config --global user.email ${{ secrets.GH_MAIL }}
            git config --global credential.helper store
-           echo "https://${{ secrets.GH_NAME }}:${{ secrets.GH_TOKEN }}@github.com" > ~/.git-credentials
+           echo "https://${{ secrets.GH_NAME }}:${{ secrets.GITHUB_TOKEN }}@github.com" > ~/.git-credentials
        - name: Cloning Private repo
          continue-on-error: true
          run: |
-           git clone https://${{ secrets.GH_NAME }}:${{ secrets.GH_TOKEN }}@github.com/${{ secrets.GH_NAME }}/${{ secrets.PR }} PR
+           git clone https://${{ secrets.GH_NAME }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ secrets.GH_NAME }}/${{ secrets.PR }} PR
 
        - name: Running bomt
          timeout-minutes: 350
@@ -44,4 +44,4 @@ jobs:
               echo $(TZ='${{ secrets.TZ }}' date) >> loop.txt
               git add loop.txt
               git commit -m "Workflow : Loop $(TZ='${{ secrets.TZ }}' date)"
-              git push -q https://${{ secrets.GH_TOKEN }}@github.com/${{ secrets.GH_NAME }}/TG-UB-workflow HEAD:main
+              git push -q https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ secrets.GH_NAME }}/TG-UB-workflow HEAD:main
