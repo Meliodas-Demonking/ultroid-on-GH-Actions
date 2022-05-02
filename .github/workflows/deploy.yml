@@ -26,16 +26,16 @@ jobs:
            git config --global user.email ${{ secrets.GH_MAIL }}
            git config --global credential.helper store
            echo "https://${{ secrets.GH_NAME }}:${{ secrets.GH_TOKEN }}@github.com" > ~/.git-credentials
-       - name: Cloning Private repo
-         continue-on-error: true
-         run: |
-           git clone https://amirulandalib:${{ secrets.GH_TOKEN }}@github.com/amirulandalib/ultroid_personal ultroid
-
-       - name: Running bomt
+       - name: Running bot
          timeout-minutes: 350
          continue-on-error: true
          run: |
-           sudo bash ultroid.sh
+           git clone https://amirulandalib:${{ secrets.GH_TOKEN }}@github.com/amirulandalib/ultroid_personal /root/TeamUltroid
+           cd /root/TeamUltroid
+           pip install -U -r requirements.txt
+           pip3 install --no-cache-dir -r requirements.txt
+           pip3 install av --no-binary av
+           bash startup
        - name: Loop
          continue-on-error: true
          run: |
