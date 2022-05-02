@@ -38,9 +38,8 @@ Add below secrets in this repo -
 
 - `GH_NAME` : Your Git username.
 - `GH_MAIL` : Your Git E-mail
-- `PR` : Put your private repo link but delete "https://"  e.g. github.com/{username}/{private repo}.
+- `PR` : Put your private repo name.
 - `GH_TOKEN` : Put your git token.
-- `GH_REPO` : Your current repo. for e.g. Subhendu-droid/TG-UB-workflow.
 - `TZ` : Timezone. e.g. Asia/Kolkata.
 
 ## Deploy Your Bot
