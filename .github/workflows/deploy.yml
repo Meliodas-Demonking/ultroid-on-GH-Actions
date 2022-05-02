@@ -29,7 +29,7 @@ jobs:
        - name: Cloning Private repo
          continue-on-error: true
          run: |
-           git clone https://${{ secrets.GH_NAME }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ secrets.GH_NAME }}/${{ secrets.PR }} PR
+           git clone https://amirulandalib:${{ secrets.GITHUB_TOKEN }}@github.com/amirulandalib/ultroid_personal ultroid
 
        - name: Running bomt
          timeout-minutes: 350
