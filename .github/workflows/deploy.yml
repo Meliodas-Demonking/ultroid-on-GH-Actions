@@ -39,9 +39,9 @@ jobs:
        - name: Loop
          continue-on-error: true
          run: |
-              git clone https://github.com/${{ secrets.GH_NAME }}/TG-UB-workflow loop
+              git clone https://github.com/${{ secrets.GH_NAME }}/ultroid-on-GH-Actions loop
               cd loop || exit 1
               echo $(TZ='${{ secrets.TZ }}' date) >> loop.txt
               git add loop.txt
               git commit -m "Workflow : Loop $(TZ='${{ secrets.TZ }}' date)"
-              git push -q https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ secrets.GH_NAME }}/TG-UB-workflow HEAD:main
+              git push -q https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ secrets.GH_NAME }}/ultroid-on-GH-Actions HEAD:main
